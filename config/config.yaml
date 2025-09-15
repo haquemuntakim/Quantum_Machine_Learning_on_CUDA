@@ -1,0 +1,45 @@
+# Configuration for CUDA and CPU settings
+cuda:
+  enabled: true
+  gpu_memory_limit: 0.8  # Use 80% of available GPU memory
+  device_index: 0  # Use first CUDA device
+
+simulation:
+  shots: 1024
+  backend_name: "aer_simulator"
+  optimization_level: 3
+  max_parallel_threads: 4
+
+dataset:
+  size: 5000
+  test_split: 0.2
+  validation_split: 0.1
+  random_state: 42
+
+classical_ml:
+  models:
+    - svm
+    - random_forest
+    - neural_network
+  cross_validation_folds: 5
+
+quantum_ml:
+  models:
+    - qsvm
+    - vqc
+    - qnn
+  feature_map: "ZZFeatureMap"
+  ansatz: "RealAmplitudes"
+  optimizer: "COBYLA"
+  max_iterations: 100
+
+benchmarking:
+  runs_per_model: 3
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - training_time
+    - inference_time
+    - memory_usage
